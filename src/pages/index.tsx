@@ -1,60 +1,31 @@
-import Head from "next/head";
-import { GetServerSideProps } from "next";
+import { AiFillGithub, AiOutlineArrowRight } from "react-icons/ai";
 
-import { CompletedChallenges } from "../components/CompletedChallenges";
-import { Countdown } from "../components/Countdown";
-import { Experiencebar } from "../components/ExperienceBar";
-import { ChallengeBox } from "../components/ChallengeBox";
-import { Profile } from "../components/Profile";
-import { CountdownProvider } from "../contexts/CountdownContext";
-import { ChallengesProvider } from "../contexts/ChallengesContext";
+import styles from "../styles/pages/Loggin.module.css";
 
-import styles from "../styles/pages/Home.module.css";
-
-interface HomeProps {
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-}
-
-export default function Home(props: HomeProps) {
+export default function Loggin() {
   return (
-    <ChallengesProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
-    >
-      <div className={styles.container}>
-        <Head>
-          <title>Home | move.it</title>
-        </Head>
-        <Experiencebar />
+    <div className={styles.container}>
+      <section>
+        <div>
+          <img src="./Simbolo.png" alt="Logo" />
+        </div>
+        <div>
+          <img src="./logo.png" alt="Logo move.it" />
 
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
-      </div>
-    </ChallengesProvider>
+          <strong>Welcome</strong>
+          <div>
+            <AiFillGithub size={40} />
+            <p>Log-in with your Github account to start using our platform.</p>
+          </div>
+
+          <div>
+            <input type="text" placeholder="Your username" />
+            <button type="button">
+              <AiOutlineArrowRight size={20} />
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
-
-  return {
-    props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted),
-    },
-  };
-};

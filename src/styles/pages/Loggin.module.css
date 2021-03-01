@@ -1,0 +1,91 @@
+.container {
+  height: 100vh;
+  /* max-width: 992px; */
+  margin: 0 auto;
+  /* padding: 2.5rem 2rem; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: var(--blue);
+}
+
+.container section {
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6.25rem;
+  align-content: center;
+}
+
+.container section > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  color: var(--white);
+}
+
+.container section > div:last-child img {
+  width: 22rem;
+
+  margin: 8rem 0;
+}
+
+.container section > div:last-child strong {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.container section > div:last-child div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  color: var(--text-highlight);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.container section > div:last-child div p {
+  padding: 0 1rem;
+  width: 20rem;
+}
+
+.container section > div:last-child input {
+  height: 5rem;
+  width: 21rem;
+
+  padding: 0 2rem;
+  background-image: linear-gradient(to right, var(--blue-dark), var(--blue));
+  border: 0;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.container section > div:last-child input:focus {
+  outline: none;
+}
+
+.container section > div:last-child input::placeholder {
+  color: var(--text-highlight);
+}
+
+.container section > div:last-child button {
+  height: 5rem;
+  width: 5rem;
+
+  background: var(--blue-dark);
+  color: var(--white);
+  text-decoration: none;
+  outline: none;
+  border: 0;
+
+  transition: background-color 0.2s;
+}
+
+.container section > div:last-child button:hover {
+  background: var(--green);
+}
