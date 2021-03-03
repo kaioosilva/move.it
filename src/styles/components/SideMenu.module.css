@@ -1,0 +1,57 @@
+.sideMenu {
+  display: flex;
+  flex-direction: column;
+
+  background-image: linear-gradient(to bottom, var(--white), var(--background));
+
+  width: 7rem;
+  height: 100vh;
+}
+
+.sideMenu > div:first-child {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 15%;
+}
+
+.sideMenu > div:first-child img {
+  height: 42px;
+  width: 48;
+  align-items: center;
+}
+
+.sideMenu > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+
+.sideMenu > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+}
+
+.sideMenu > div button {
+  color: var(--gray-line);
+  padding: 1rem;
+
+  background: none;
+  text-decoration: none;
+  outline: none;
+  border: 0;
+}
+
+.sideMenu > div button:hover {
+  color: var(--blue);
+}
+
+.sideMenu > div button:active {
+  color: var(--blue);
+}

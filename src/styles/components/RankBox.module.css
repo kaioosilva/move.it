@@ -1,0 +1,64 @@
+.container {
+  max-width: 1100px;
+
+  margin: 0;
+  padding: 0.4rem 0;
+
+  display: flex;
+}
+
+.ranked {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 96px;
+
+  background: var(--white);
+
+  margin-right: 0.5rem;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.ranked p {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 29px;
+}
+
+.profileContainer {
+  width: 68%;
+}
+
+.dataContainer {
+  background: var(--white);
+  border-radius: 5px 0px 0px 5px;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.data {
+  flex: 1;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.data p {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 19px;
+
+  color: var(--blue);
+}
+
+.data p span {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 19px;
+
+  color: var(--text);
+}

@@ -47,13 +47,23 @@
   color: var(--text-highlight);
   font-weight: 500;
   margin-bottom: 2rem;
+
+  cursor: pointer;
+  max-width: 21rem;
 }
 
 .container section > div:last-child div p {
-  padding: 0 1rem;
-  width: 20rem;
+  padding-left: 1rem;
+  width: 21rem;
+
+  cursor: pointer;
 }
 
+.container section > div:last-child div:hover {
+  color: var(--green);
+}
+
+/* 
 .container section > div:last-child input {
   height: 5rem;
   width: 21rem;
@@ -88,4 +98,4 @@
 
 .container section > div:last-child button:hover {
   background: var(--green);
-}
+} */
