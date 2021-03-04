@@ -15,22 +15,22 @@ export function Profile(props: ProfileProps) {
   return (
     <div className={styles.profileContainer}>
       {props.avatar ? (
-        <img src={`${props.avatar}`} alt={props.name} />
+        <img src={`${props?.avatar}`} alt={props?.name} />
       ) : (
-        <img src={`${userData.avatar}`} alt={userData.name} />
+        <img src={`${userData?.avatar}`} alt={userData?.name} />
       )}
 
       <div>
-        {props.name ? (
-          <strong>{props.name}</strong>
+        {props?.name ? (
+          <strong>{props?.name}</strong>
         ) : (
-          <strong>{userData.name}</strong>
+          <strong>{userData?.name}</strong>
         )}
 
-        {props.level ? (
+        {props?.level ? (
           <p>
             <img src="icons/level.svg" alt="Level" />
-            Level {props.level}
+            Level {props?.level}
           </p>
         ) : (
           <p>
