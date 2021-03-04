@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FormEvent, useCallback } from "react";
+import React, { useState } from "react";
+import { FormEvent } from "react";
 import { AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
 import { IoMedalOutline } from "react-icons/io5";
 import { useAuth } from "../contexts/Auth";
@@ -9,17 +9,44 @@ import Router from "next/router";
 import styles from "../styles/components/SideMenu.module.css";
 
 interface SideMenuProps {
-  menu: (value: "home" | "leaderboard") => void;
+  // menu: (value: "home" | "leaderboard") => void;
+  menu: (value: string) => void;
 }
 
 export function SideMenu({ menu }: SideMenuProps) {
   const { signOut } = useAuth();
+  const [menuItems, setMenuItems] = useState([
+    {
+      id: 1,
+      menu: "home",
+      icon: "AiOutlineHome",
+      isActive: true,
+    },
+    {
+      id: 2,
+      menu: "leaderboard",
+      icon: "IoMedalOutline",
+      isActive: false,
+    },
+  ]);
 
   function handleSignOut(event: FormEvent) {
     event.preventDefault();
     signOut();
 
     if (typeof window !== "undefined") Router.push(`/`);
+  }
+
+  function handleOnClick(item) {
+    setMenuItems(
+      menuItems.map((menuItem) =>
+        menuItem.id === item.id
+          ? { ...menuItem, isActive: true }
+          : { ...menuItem, isActive: false }
+      )
+    );
+
+    menu(item.menu);
   }
 
   return (
@@ -29,12 +56,23 @@ export function SideMenu({ menu }: SideMenuProps) {
       </div>
 
       <div>
-        <button onClick={() => menu("home")}>
-          <AiOutlineHome size={40} />
-        </button>
-        <button onClick={() => menu("leaderboard")}>
-          <IoMedalOutline size={40} />
-        </button>
+        {menuItems.map((item) => {
+          return (
+            <button
+              onClick={() => handleOnClick(item)}
+              key={item.id}
+              style={{
+                color: item.isActive ? "#5965e0" : "#dcdde0",
+              }}
+            >
+              {item.icon === "AiOutlineHome" ? (
+                <AiOutlineHome size={40} />
+              ) : (
+                <IoMedalOutline size={40} />
+              )}
+            </button>
+          );
+        })}
       </div>
 
       <div>

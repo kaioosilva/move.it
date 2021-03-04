@@ -1,5 +1,4 @@
 import { GetServerSideProps } from "next";
-import Router from "next/router";
 import { useEffect, useState } from "react";
 import { SideMenu } from "../components/SideMenu";
 import { useAuth } from "../contexts/Auth";
@@ -8,6 +7,7 @@ import api from "../services/api";
 import styles from "../styles/pages/Home.module.css";
 import Challenges from "./challenges";
 import Leaderboard from "./leaderboard";
+import { useRouter } from "next/router";
 
 interface UserDataProps {
   id: string;
@@ -18,17 +18,33 @@ interface UserDataProps {
   token: string;
 }
 
+interface UsersRankedProps {
+  _id: string;
+  login: string;
+  avatar: string;
+  name: string;
+  level: number;
+  challengesCompleted: number;
+  experienceTotal: number;
+}
+
 interface HomeProps {
   level: number;
   currentExperience: number;
   challengesCompleted: number;
   userData: UserDataProps;
+  users_ranked: UsersRankedProps[];
 }
 
 export default function Home(props: HomeProps) {
+  const router = useRouter();
   const { signIn } = useAuth();
 
   const [menu, setMenu] = useState("home");
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -47,8 +63,9 @@ export default function Home(props: HomeProps) {
     fetchMyAPI();
   }, []);
 
-  function handleMenu(value: "home" | "leaderboard") {
+  function handleMenu(value: string) {
     setMenu(value);
+    refreshData();
   }
 
   return (
@@ -60,7 +77,11 @@ export default function Home(props: HomeProps) {
     >
       <div className={styles.mainContainer}>
         <SideMenu menu={handleMenu} />
-        {menu === "home" ? <Challenges /> : <Leaderboard />}
+        {menu === "home" ? (
+          <Challenges />
+        ) : (
+          <Leaderboard users_ranked={props.users_ranked} />
+        )}
       </div>
     </ChallengesProvider>
   );
@@ -77,6 +98,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
   });
 
+  const user = await api.get("/api/rankPositions");
+
   return {
     props: {
       level: Number(level),
@@ -90,6 +113,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         code,
         token: data.token,
       },
+      users_ranked: user.data,
     },
   };
 };

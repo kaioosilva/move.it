@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 import api from "../services/api";
 
 import Router from "next/router";
+// import { useRouter } from "next/router";
 
 import styles from "../styles/pages/Loggin.module.css";
 
@@ -28,9 +29,10 @@ export default function Loggin(props: LogginProps) {
       "https://github.com/login/oauth/authorize?client_id=ed3209fa24a5b426d532";
   };
 
-  if (props?.userData?.name !== "") {
-    if (typeof window !== "undefined")
+  if (props?.userData?.code !== "") {
+    if (typeof window !== "undefined") {
       Router.push(`/home?code=${props?.userData?.code}`);
+    }
   }
 
   return (

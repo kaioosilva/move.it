@@ -3,19 +3,41 @@ import { ChallengesContext } from "../contexts/ChallengesContext";
 
 import styles from "../styles/components/Profile.module.css";
 
-export function Profile() {
+interface ProfileProps {
+  avatar?: string;
+  name?: string;
+  level?: number;
+}
+
+export function Profile(props: ProfileProps) {
   const { level, userData } = useContext(ChallengesContext);
 
   return (
     <div className={styles.profileContainer}>
-      <img src={`${userData.avatar}`} alt="Kaio Silva" />
-      <div>
-        <strong>{userData.name}</strong>
+      {props.avatar ? (
+        <img src={`${props.avatar}`} alt={props.name} />
+      ) : (
+        <img src={`${userData.avatar}`} alt={userData.name} />
+      )}
 
-        <p>
-          <img src="icons/level.svg" alt="Level" />
-          Level {level}
-        </p>
+      <div>
+        {props.name ? (
+          <strong>{props.name}</strong>
+        ) : (
+          <strong>{userData.name}</strong>
+        )}
+
+        {props.level ? (
+          <p>
+            <img src="icons/level.svg" alt="Level" />
+            Level {props.level}
+          </p>
+        ) : (
+          <p>
+            <img src="icons/level.svg" alt="Level" />
+            Level {level}
+          </p>
+        )}
       </div>
     </div>
   );

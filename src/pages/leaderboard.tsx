@@ -1,13 +1,24 @@
 import Head from "next/head";
+
 import RankBox from "../components/RankBox";
-import { useAuth } from "../contexts/Auth";
 
 import styles from "../styles/pages/leaderboard.module.css";
 
-export default function Leaderboard() {
-  const { user } = useAuth();
+interface UsersRankedProps {
+  _id: string;
+  login: string;
+  avatar: string;
+  name: string;
+  level: number;
+  challengesCompleted: number;
+  experienceTotal: number;
+}
 
-  console.log({ user });
+interface LeaderboardProps {
+  users_ranked: UsersRankedProps[];
+}
+
+export default function Leaderboard(props: LeaderboardProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -30,13 +41,19 @@ export default function Leaderboard() {
       </div>
 
       <div className={styles.positions}>
-        <RankBox />
-        <RankBox />
-        <RankBox />
-        <RankBox />
-        <RankBox />
-        <RankBox />
-        <RankBox />
+        {props?.users_ranked?.map((user, index) => {
+          return (
+            <RankBox
+              key={user._id}
+              position={index + 1}
+              avatar={user.avatar}
+              name={user.name}
+              level={user.level}
+              challengesCompleted={user.challengesCompleted}
+              experienceTotal={user.experienceTotal}
+            />
+          );
+        })}
       </div>
     </div>
   );

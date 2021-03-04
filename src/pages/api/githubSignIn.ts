@@ -53,6 +53,10 @@ export default async (request: NowRequest, response: NowResponse) => {
       code: code,
       name: data.name,
       signinAt: new Date(),
+      level: 1,
+      currentExperience: 0,
+      experienceTotal: 0,
+      challengesCompleted: 0,
     });
   } else {
     await collection.findOneAndUpdate(

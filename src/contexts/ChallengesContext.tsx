@@ -2,6 +2,7 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 import Cookies from "js-cookie";
 import challenges from "../../challenges.json";
 import { LevelUpModal } from "../components/LevelUpModal";
+import api from "../services/api";
 
 interface Challenge {
   type: "body" | "eye";
@@ -47,7 +48,7 @@ export function ChallengesProvider({
   ...rest
 }: ChallengesProviderProps) {
   const [level, setLevel] = useState(rest.level ?? 1);
-  const [currentExperience, setCUrrencyExperience] = useState(
+  const [currentExperience, setCurrentExperience] = useState(
     rest.currentExperience ?? 0
   );
   const [challengesCompleted, setChallengesCompleted] = useState(
@@ -107,14 +108,37 @@ export function ChallengesProvider({
 
     let finalExperience = currentExperience + amount;
 
+    let up = false;
+
     if (finalExperience >= experienceToNextLevel) {
       finalExperience = finalExperience - experienceToNextLevel;
+      up = true;
       levelUp();
     }
 
-    setCUrrencyExperience(finalExperience);
+    setCurrentExperience(finalExperience);
     setActiveChallenge(null);
     setChallengesCompleted(challengesCompleted + 1);
+
+    const challengesTotal = challengesCompleted + 1;
+
+    userChallenge(amount, finalExperience, challengesTotal, up);
+  }
+
+  async function userChallenge(
+    amount: number,
+    finalExperience: number,
+    challengesTotal: number,
+    up: boolean
+  ) {
+    await api.post("/api/challenges", {
+      login: userData.login,
+      name: userData.name,
+      level: up ? level + 1 : level,
+      currentExperience: finalExperience,
+      challengesCompleted: challengesTotal,
+      challengeExperience: amount,
+    });
   }
 
   return (
