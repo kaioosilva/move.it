@@ -21,8 +21,8 @@ export default async (request: NowRequest, response: NowResponse) => {
   const result = await axios.post(
     "https://github.com/login/oauth/access_token",
     {
-      client_id: "ed3209fa24a5b426d532",
-      client_secret: "34cb762d342bc62da5851eaa6bc837139a4257f6",
+      client_id: process.env.GITHUB_CLIENT_ID,
+      client_secret: process.env.GITHUB_CLIENT_SECRET,
       code,
     },
     options
