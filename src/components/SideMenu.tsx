@@ -75,7 +75,7 @@ export function SideMenu({ menu }: SideMenuProps) {
         })}
       </div>
 
-      <div>
+      <div className={styles.logOut}>
         <button type="button" onClick={handleSignOut}>
           <AiOutlineLogout size={40} />
         </button>

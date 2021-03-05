@@ -8,10 +8,12 @@ export default async (request: NowRequest, response: NowResponse) => {
   const { code } = query;
 
   if (!code) {
-    return response.send({
-      success: false,
-      message: "Error: no code",
-    });
+    // return response.send({
+    //   success: false,
+    //   message: "Error: no code",
+    // });
+
+    return response.redirect("../");
   }
 
   const options = {
@@ -23,7 +25,7 @@ export default async (request: NowRequest, response: NowResponse) => {
     {
       client_id: process.env.GITHUB_CLIENT_ID,
       client_secret: process.env.GITHUB_CLIENT_SECRET,
-      code,
+      code: code,
     },
     options
   );
@@ -69,5 +71,5 @@ export default async (request: NowRequest, response: NowResponse) => {
     );
   }
 
-  response.redirect(`../home?code=${code}`);
+  return response.redirect(`../home?code=${code}`);
 };

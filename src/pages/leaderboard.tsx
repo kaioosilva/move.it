@@ -16,6 +16,7 @@ interface UsersRankedProps {
 
 interface LeaderboardProps {
   users_ranked: UsersRankedProps[];
+  menuSelected: string;
 }
 
 export default function Leaderboard(props: LeaderboardProps) {
@@ -35,8 +36,8 @@ export default function Leaderboard(props: LeaderboardProps) {
           <p>USER</p>
         </div>
         <div>
-          <p>CHALLENGES</p>
-          <p>EXPERIENCE</p>
+          <p className={styles.challenges}>CHALLENGES</p>
+          <p className={styles.experience}>EXPERIENCE</p>
         </div>
       </div>
 
@@ -51,6 +52,7 @@ export default function Leaderboard(props: LeaderboardProps) {
               level={user.level}
               challengesCompleted={user.challengesCompleted}
               experienceTotal={user.experienceTotal}
+              menuSelected={props.menuSelected}
             />
           );
         })}

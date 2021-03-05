@@ -10,7 +10,11 @@ import { CountdownProvider } from "../contexts/CountdownContext";
 
 import styles from "../styles/pages/Challenges.module.css";
 
-export default function Challenges() {
+interface ChallengesProps {
+  menuSelected: string;
+}
+
+export default function Challenges(props: ChallengesProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -21,7 +25,7 @@ export default function Challenges() {
       <CountdownProvider>
         <section>
           <div>
-            <Profile />
+            <Profile menuSelected={props.menuSelected} />
             <CompletedChallenges />
             <Countdown />
           </div>

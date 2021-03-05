@@ -10,6 +10,7 @@ interface RankBoxProps {
   challengesCompleted: number;
   experienceTotal: number;
   position: number;
+  menuSelected: string;
 }
 
 export default function RankBox(props: RankBoxProps) {
@@ -21,6 +22,7 @@ export default function RankBox(props: RankBoxProps) {
       <div className={styles.dataContainer}>
         <div className={styles.profileContainer}>
           <Profile
+            menuSelected={props.menuSelected}
             avatar={props.avatar}
             name={props.name}
             level={props.level}
@@ -28,7 +30,7 @@ export default function RankBox(props: RankBoxProps) {
         </div>
 
         <div className={styles.data}>
-          <p>
+          <p className={styles.challengesCompleted}>
             {props.challengesCompleted} <span>completed</span>
           </p>
           <p>

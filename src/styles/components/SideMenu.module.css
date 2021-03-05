@@ -1,10 +1,12 @@
 .sideMenu {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 
   background-image: linear-gradient(to bottom, var(--white), var(--background));
 
-  width: 7rem;
+  width: 90px;
   height: 100vh;
 }
 
@@ -18,7 +20,7 @@
 
 .sideMenu > div:first-child img {
   height: 42px;
-  width: 48;
+  width: 48px;
   align-items: center;
 }
 
@@ -48,10 +50,39 @@
   border: 0;
 }
 
-.sideMenu > div button:hover {
-  color: var(--blue);
+.sideMenu div.logOut svg {
+  color: var(--text);
 }
 
-.sideMenu > div button:active {
-  color: var(--blue);
+.sideMenu div.logOut svg:hover {
+  color: var(--red);
+}
+
+@media (max-width: 768px) {
+  .sideMenu {
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: row;
+
+    position: fixed;
+  }
+
+  .sideMenu > div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sideMenu > div:first-child img {
+    height: 30px;
+    width: 30px;
+    align-items: center;
+  }
+
+  .sideMenu > div button svg {
+    width: 30px;
+  }
 }

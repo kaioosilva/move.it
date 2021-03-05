@@ -4,10 +4,11 @@ import { SideMenu } from "../components/SideMenu";
 import { useAuth } from "../contexts/Auth";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
 import api from "../services/api";
-import styles from "../styles/pages/Home.module.css";
 import Challenges from "./challenges";
 import Leaderboard from "./leaderboard";
 import { useRouter } from "next/router";
+
+import styles from "../styles/pages/Home.module.css";
 
 interface UserDataProps {
   id: string;
@@ -78,9 +79,9 @@ export default function Home(props: HomeProps) {
       <div className={styles.mainContainer}>
         <SideMenu menu={handleMenu} />
         {menu === "home" ? (
-          <Challenges />
+          <Challenges menuSelected={menu} />
         ) : (
-          <Leaderboard users_ranked={props.users_ranked} />
+          <Leaderboard users_ranked={props.users_ranked} menuSelected={menu} />
         )}
       </div>
     </ChallengesProvider>
@@ -88,7 +89,7 @@ export default function Home(props: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
+  //  const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
   const { query } = ctx;
   const { code } = query;
 
@@ -102,9 +103,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted),
+      level: data.level,
+      currentExperience: data.currentExperience,
+      challengesCompleted: data.challengesCompleted,
       userData: {
         id: data._id,
         name: data.name,

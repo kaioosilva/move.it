@@ -29,3 +29,60 @@
 .profileContainer div p img {
   margin-right: 0.5rem;
 }
+
+.profileHomeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.profileHomeContainer > img {
+  width: 5.5rem;
+  height: 5.5;
+  border-radius: 50%;
+}
+
+.profileHomeContainer div {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.5rem;
+}
+
+.profileHomeContainer div strong {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--title);
+}
+
+.profileHomeContainer div p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.profileHomeContainer div p img {
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .profileContainer > img {
+    width: 2rem;
+    height: 2;
+  }
+
+  .profileContainer div strong {
+    font-size: 1rem;
+  }
+
+  .profileContainer div p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    width: 100px;
+  }
+
+  .profileContainer div p img {
+    width: 12px;
+  }
+
+  .profileHomeContainer {
+    margin-top: 3rem;
+  }
+}

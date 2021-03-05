@@ -4,6 +4,7 @@ import { ChallengesContext } from "../contexts/ChallengesContext";
 import styles from "../styles/components/Profile.module.css";
 
 interface ProfileProps {
+  menuSelected: string;
   avatar?: string;
   name?: string;
   level?: number;
@@ -13,7 +14,13 @@ export function Profile(props: ProfileProps) {
   const { level, userData } = useContext(ChallengesContext);
 
   return (
-    <div className={styles.profileContainer}>
+    <div
+      className={
+        props.menuSelected === "leaderboard"
+          ? styles.profileContainer
+          : styles.profileHomeContainer
+      }
+    >
       {props.avatar ? (
         <img src={`${props?.avatar}`} alt={props?.name} />
       ) : (

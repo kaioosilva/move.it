@@ -12,7 +12,6 @@
   justify-content: center;
   align-items: center;
   width: 80px;
-  height: 96px;
 
   background: var(--white);
 
@@ -23,7 +22,7 @@
 .ranked p {
   color: var(--text);
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 29px;
 }
 
@@ -32,9 +31,10 @@
 }
 
 .dataContainer {
+  display: flex;
   background: var(--white);
   border-radius: 5px 0px 0px 5px;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
   width: 100%;
 }
 
@@ -61,4 +61,51 @@
   line-height: 19px;
 
   color: var(--text);
+}
+
+@media (max-width: 1023px) {
+  .ranked {
+    width: 30px;
+    height: 80px;
+  }
+
+  .ranked p {
+    font-size: 1.2rem;
+  }
+
+  .dataContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+  }
+
+  .profileContainer {
+    width: 60%;
+  }
+
+  .data {
+    justify-content: space-around;
+  }
+
+  .data p {
+    display: flex;
+    font-size: 0.8rem;
+  }
+
+  .data p span {
+    margin-left: 0.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .data p.challengesCompleted {
+    visibility: hidden;
+    display: none;
+  }
+
+  .profileContainer {
+    width: 70%;
+  }
 }

@@ -1,7 +1,15 @@
 .mainContainer {
   flex: 1;
 
-  display: grid;
-  grid-template-columns: 8% 92%;
+  display: flex;
   align-content: center;
+}
+
+@media (max-width: 769px) {
+  .mainContainer {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+  }
 }

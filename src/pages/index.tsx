@@ -42,7 +42,7 @@ export default function Loggin(props: LogginProps) {
           <img src="./Simbolo.png" alt="Logo" />
         </div>
         <div>
-          <img src="./logo.png" alt="Logo move.it" />
+          <img src="./Logo.png" alt="Logo move.it" />
 
           <strong>Welcome</strong>
           <div onClick={clickHandle}>
