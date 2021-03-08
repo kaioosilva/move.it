@@ -48,7 +48,7 @@ export default function Leaderboard(props: LeaderboardProps) {
               key={user._id}
               position={index + 1}
               avatar={user.avatar}
-              name={user.name}
+              name={user.name ? user.name : user.login}
               level={user.level}
               challengesCompleted={user.challengesCompleted}
               experienceTotal={user.experienceTotal}

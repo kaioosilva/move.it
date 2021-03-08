@@ -63,6 +63,119 @@
   color: var(--green);
 }
 
+@media (max-width: 1024px) {
+  .container section > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container section > div:first-child img {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  .container section > div:last-child {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container section > div:last-child img {
+    width: 24rem;
+    margin: 4rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container section > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container section > div:first-child img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .container section > div:last-child {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container section > div:last-child img {
+    width: 20rem;
+    margin: 4rem 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .container section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container section > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container section > div:first-child img {
+    height: 200px;
+    width: 200px;
+  }
+
+  .container section > div:last-child {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container section > div:last-child img {
+    width: 16rem;
+    margin: 4rem 0;
+  }
+}
+
+@media (max-width: 414px) {
+  .container section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container section > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container section > div:first-child img {
+    height: 100px;
+    width: 100px;
+  }
+
+  .container section > div:last-child {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container section > div:last-child img {
+    width: 16rem;
+    margin: 4rem 0;
+  }
+}
+
 /* 
 .container section > div:last-child input {
   height: 5rem;

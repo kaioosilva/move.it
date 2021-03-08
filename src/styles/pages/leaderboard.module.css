@@ -53,6 +53,11 @@
   .headerBoard div p.challenges {
     padding-right: 1.2rem;
   }
+
+  .positions {
+    height: 100vh;
+    margin-bottom: 2rem;
+  }
 }
 
 @media (max-width: 767px) {
@@ -91,11 +96,28 @@
 
   .positions {
     height: 100vh;
+    margin-bottom: 3rem;
   }
 }
 
 @media (max-width: 320px) {
   .container {
     width: auto;
+  }
+
+  .positions {
+    height: 100vh;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 280px) {
+  .container {
+    width: auto;
+  }
+
+  .positions {
+    height: 100vh;
+    margin-bottom: 0;
   }
 }
