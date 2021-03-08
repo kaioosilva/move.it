@@ -29,6 +29,7 @@ Track your time, be more productive and take care of your health. Move.it was de
 
 Technologies that I used to develop this web client
 
+- [Github OAuth](https://docs.github.com/en/github/authenticating-to-github/authorizing-oauth-apps)
 - [ReactJS](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [React Icons](https://react-icons.netlify.com/#/)
