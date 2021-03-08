@@ -4,6 +4,8 @@
 
 <p align="center">The best way be more productive and take care of your health!</p>
 
+<p align="center">Deployed <a href="https://moveit-next-self-chi.vercel.app">here</a> </p>
+
 <p align="center">
   <a href="#%EF%B8%8F-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
